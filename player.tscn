@@ -1,14 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0dbewrkvshih"]
+[gd_scene load_steps=5 format=3 uid="uid://c0dbewrkvshih"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_sh265"]
+[ext_resource type="Texture2D" uid="uid://ds7kpj4nklei5" path="res://icon.svg" id="1_4flbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_4flbx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(128, 127)
 
 [node name="player" type="CharacterBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(20, 20)
-texture = SubResource("CanvasTexture_sh265")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i3pqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4flbx")

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci3hmscudfxwq"]
+[gd_scene load_steps=5 format=3 uid="uid://ci3hmscudfxwq"]
 
 [ext_resource type="PackedScene" uid="uid://c0dbewrkvshih" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://di73ci3hlkwwn" path="res://player.gd" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://ds7kpj4nklei5" path="res://icon.svg" id="3_h2yge"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_0xm2m"]
 
@@ -26,6 +25,3 @@ texture = SubResource("CanvasTexture_0xm2m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 264)
 shape = SubResource("WorldBoundaryShape2D_0xm2m")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture = ExtResource("3_h2yge")
