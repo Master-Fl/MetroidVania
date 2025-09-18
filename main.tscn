@@ -10,6 +10,7 @@
 [node name="main" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(-90, 2)
 script = ExtResource("2_0xm2m")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
