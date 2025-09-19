@@ -6,6 +6,9 @@ const JUMP_VELOCITY = -400.0
 var isAttacking = false
 
 
+func _ready():
+	pass
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -19,11 +22,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("right") and isAttacking == false:
 		$".".position.x += SPEED
 		$AnimatedSprite2D.play("walk")
-		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.scale.x = 2
+		$attackcollision/CollisionShape2D.position.x = 82
 	elif Input.is_action_pressed("left") and isAttacking == false:
 		$".".position.x -= SPEED
 		$AnimatedSprite2D.play("walk")
-		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.scale.x = -2
+		$attackcollision/CollisionShape2D.position.x = -37
 	else:
 		if isAttacking == false:
 			$AnimatedSprite2D.play("default")

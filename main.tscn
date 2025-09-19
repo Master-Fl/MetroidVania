@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci3hmscudfxwq"]
+[gd_scene load_steps=5 format=3 uid="uid://ci3hmscudfxwq"]
 
 [ext_resource type="PackedScene" uid="uid://c0dbewrkvshih" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://blgfyb06hx2f4" path="res://enemy.tscn" id="2_0xm2m"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_0xm2m"]
 
@@ -24,3 +25,6 @@ texture = SubResource("CanvasTexture_0xm2m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 264)
 shape = SubResource("WorldBoundaryShape2D_0xm2m")
+
+[node name="enemy" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(-64, 222)
