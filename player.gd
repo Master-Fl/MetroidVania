@@ -33,10 +33,7 @@ func _physics_process(delta: float) -> void:
 		$attackcollision/CollisionShape2D.disabled = false
 		isAttacking = true
 	
-	if $AnimatedSprite2D.flip_h:
-		$attackcollision.position.x = -abs($attackcollision.position.x)  # links
-	else:
-		$attackcollision.position.x = abs($attackcollision.position.x)   # rechts
+	
 	
 	move_and_slide()
 
