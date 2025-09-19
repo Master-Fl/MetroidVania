@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 10.0
 const JUMP_VELOCITY = -400.0
 var isAttacking = false
+
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -13,22 +15,33 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction and isAttacking == false:
-		velocity.x = direction * SPEED
+		
+	if Input.is_action_pressed("right") and isAttacking == false:
+		$".".position.x += SPEED
 		$AnimatedSprite2D.play("walk")
+		$AnimatedSprite2D.flip_h = false
+	elif Input.is_action_pressed("left") and isAttacking == false:
+		$".".position.x -= SPEED
+		$AnimatedSprite2D.play("walk")
+		$AnimatedSprite2D.flip_h = true
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		$AnimatedSprite2D.play("walk")
-	if direction == 0:
 		if isAttacking == false:
 			$AnimatedSprite2D.play("default")
 	
 	if Input.is_action_just_pressed("attack"):
 		$AnimatedSprite2D.play("attack")
+		$attackcollision/CollisionShape2D.disabled = false
 		isAttacking = true
-		
+	
+	if $AnimatedSprite2D.flip_h:
+		$attackcollision.position.x = -abs($attackcollision.position.x)  # links
+	else:
+		$attackcollision.position.x = abs($attackcollision.position.x)   # rechts
+	
 	move_and_slide()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "attack":
+		$attackcollision/CollisionShape2D.disabled = true
+		isAttacking = false
