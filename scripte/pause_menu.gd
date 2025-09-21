@@ -1,6 +1,6 @@
 extends Control
 
-
+@onready var main = $"../../"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	main.pause_menu()
 
 func _on_options_pressed() -> void:
 	print("options doesn't work yet")
