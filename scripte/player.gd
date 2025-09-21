@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		if isAttacking == false:
 			$AnimatedSprite2D.play("default")
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and isAttacking == false:
 		$AnimatedSprite2D.play("attack")
 		$attackcollision/CollisionShape2D.disabled = false
 		isAttacking = true
